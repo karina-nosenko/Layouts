@@ -1,0 +1,285 @@
+*{
+    margin:0; 
+    padding:0;
+}
+
+header, main, footer, nav, section, article{
+    display: block;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#wrapper{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#layout1 #wrapper, #layout2 #wrapper{
+    display: flex;
+}
+
+/*HEADER SECTION*/
+
+header{
+    width: 100%;
+    height: 141px;
+    padding-top: 51px;
+
+    background-color:#D6D6D6;
+}
+
+#logo{
+    background: url("../images/logo.png");
+    background-repeat: no-repeat;
+    display:block;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+}
+
+/*NAVIGATION SECTION*/
+
+nav a{
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+
+    display: block;
+}
+
+.selected{
+    background-color: #2F96B4;
+}
+
+#layout1 nav{
+    background-color: #222222;
+    width: 100%;
+    height: 51px;
+    padding-top: 11px;
+}
+
+#layout1 nav ul{
+    width: 922px;
+    height: 40px;
+    margin: 0 auto;
+
+    display: flex;
+}
+
+#layout1 nav li{
+    width: 233px;
+    height: 40px;
+    text-align: center;
+
+    display: block;
+}
+
+#layout1 nav a{
+    width: 233px;
+    height: 40px;
+    margin-top: 8px;
+}
+
+#layout2 nav{
+    width: 146px;
+    height: 757px;
+    background-color: #222222;
+}
+
+#layout2 li{
+    width: 146px;
+    height: 58px;
+
+    position: relative;
+}
+
+#layout2 a{
+    position: absolute;
+    left:6px;
+    top:21px;
+}
+
+#layout3 nav{
+    background-color: #222222;
+    width: 100%;
+    height: 62px;
+}
+
+#layout3 nav ul{
+    width: 922px;
+    height: 62px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+}
+
+#layout3 nav li{
+    width: 233px;
+    height: 51px;
+    text-align: center;
+    padding-top: 11px;
+
+    display: block;
+}
+
+#layout3 nav a{
+    width: 233px;
+    height: 40px;
+    margin-top: 8px;
+}
+
+/*MAIN SECTION*/
+
+#layout1 main{
+    background-color: #FFFFFF;
+    width:741px;
+    height: 696px;
+    padding-left: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container{
+    width: 235px;
+    height: 235px;
+    margin: 24px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;  
+    align-content:space-between;
+}
+
+.container .square{
+    width: 100px;
+    height: 100px;
+    background-color: #B94A48;
+}
+
+#layout1 main .container:last-child{
+    align-self: flex-end;
+}
+
+#layout2 main .square{
+    float: left;
+}
+
+#layout2 main .square:nth-child(1){
+    width: 270px;
+    height: 324px;
+    margin: 22px 16px 24px 22px;
+}
+
+#layout2 main .square:nth-child(2){
+    width: 270px;
+    height: 254px;
+    margin: 22px 19px 24px 0;
+}
+
+#layout2 main .square:nth-child(3){
+    width: 270px;
+    height: 412px;
+    margin: 0 16px 0 22px;
+}
+
+#layout2 main .square:nth-child(4){
+    width: 270px;
+    height: 364px;
+    margin: 0px 19px 0 0;
+
+    position: absolute;
+    top: 300px;
+    left: 308px;
+}
+
+#layout2 main{
+    width: 597px;
+    height: 757px;
+    position: relative;
+}
+
+#layout3 main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#layout3 main .square{
+    width: 333px;
+    height: 348px;
+    background-color: rgb(166, 185, 185);
+}
+
+@media only screen and (max-width:1500px){
+    #wrapper{
+        width: 900px;
+    }
+}
+
+/*ASIDE SECTION*/
+
+#layout1 aside{
+    background-color: #EEEEEE;
+    width: 244px;
+    height: 696px;
+
+    position: relative;
+}
+
+#layout1 aside .square{
+    width: 148px;
+    height: 59px;
+    background-color: #B94A48;
+
+    position: absolute;
+    top: 200px;
+    right: 15px;
+}
+
+#layout2 aside{
+    width: 257px;
+    height: 757px;
+    background-color: #EEEEEE;
+
+    position: relative;
+}
+
+#layout2 aside .container{
+    position: absolute;
+    left: 11px;
+    bottom: 12px;
+    margin: 0;
+}
+
+#layout2 .square{
+    background-color: #468847;
+}
+
+/*FOOTER SECTION*/
+
+footer{
+    background-color: #D6D6D6;
+    width: 100%;
+    height: 50px;
+}
+
+#layout2 footer{
+    position:fixed;
+}
+
+
+
