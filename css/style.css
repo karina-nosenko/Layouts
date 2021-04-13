@@ -218,13 +218,32 @@ nav a{
     justify-content: center;
 }
 
-#layout3 main .square{
+#layout3 main .square, #layout3 main .add, #layout3 main .starred{
     width: 333px;
     height: 348px;
-    background-color: rgb(166, 185, 185);
+
+    position:relative;
 }
 
-@media only screen and (max-width:1500px){
+#layout3 .add .plus{
+    height: 86px;
+    width: 86px;
+
+    position: absolute;
+    top: 131px;
+    left: 123.5px;
+}
+
+#layout3 .starred .star{
+    height: 45px;
+    width: 45px;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@media only screen and (max-width:1030px){
     #wrapper{
         width: 900px;
     }

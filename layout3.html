@@ -3,10 +3,12 @@
 
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
         <title>Layouts</title>
         <link rel="icon" href="favicon.ico">
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <script src="js/scripts.js"></script>
     </head>
 
     <body>
@@ -25,19 +27,18 @@
                     </ul>
                 </nav>
 
-                <main>
-                    <article class="square"></article>
-                    <article class="square"></article>
-                    <article class="square"></article>
-                    <article class="square"></article>
-                    <article class="square"></article>
-                    <article class="square"></article>
+                <main id="main">
                 </main>
 
                 <footer></footer>
 
             </div>
         </div>
+        <script>
+            (function(){
+                SqrsManager();
+            })();
+        </script>
     </body>
 
 </html>
