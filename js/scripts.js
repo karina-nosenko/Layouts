@@ -1,3 +1,4 @@
+//Returns random color
 function randomColor(){
     var colors = ["#afb840","#5b7729","#a1ac21","#c06e25","#f7bb5a","#7a3d14","#cd4716","#f18a55","#d2b294","#e0ab71"];
     return colors[Math.floor(Math.random() * colors.length)];
@@ -7,24 +8,27 @@ function add(){
     Sqr(globalIndex++);
 }
 
+//Show/hide image
 function image(){
 
+    //hide the image
     if (this.show){
         this.style.backgroundColor = randomColor();
         this.style.backgroundImage = "none";
 
-        if(this.starred){
+        if(this.starred){   //show the star icon
             var c = this.childNodes;
             c[0].style.backgroundColor = none;
         }
 
         this.show = false;
     }
+    //show the image
     else{
         this.style.backgroundColor = "#FFFFFF";
         this.style.backgroundImage = "url(images/hamburger.png)";
 
-        if(this.starred){
+        if(this.starred){   //hide the star icon
             var c = this.childNodes;
             c[0].style.backgroundColor = this.style.backgroundColor;
         }
@@ -33,12 +37,15 @@ function image(){
     }
 }
 
+//Create square object and append it to the DOM
 function Sqr(iCurrentSqr){
-    this.show = false;
-    this.starred= false;
+    this.show = false;          //is the image opened
+    this.starred = false;       //is the square starred
+    this.color = randomColor(); //the color of the square
 
-    var sqrObj = document.createElement("section");
+    var sqrObj = document.createElement("section"); //create the square object
 
+    //The "add" square
     if(iCurrentSqr == 0){
         sqrObj.className = "add";
 
@@ -51,6 +58,7 @@ function Sqr(iCurrentSqr){
 
         plus.addEventListener("click",add);
     }
+    //Starred square
     else if((iCurrentSqr+1)%3 == 0){
         sqrObj.className = "starred";
         this.starred = true;
@@ -63,16 +71,16 @@ function Sqr(iCurrentSqr){
 
         sqrObj.addEventListener("click",image);
     }
+    //Regular square
     else{
         sqrObj.className = "square";
 
         sqrObj.addEventListener("click",image);
     }
 
-    sqrObj.style.backgroundColor = randomColor();
-    this.sqrColor = sqrObj.style.backgroundColor;
+    sqrObj.style.backgroundColor = this.color;  
 
-    document.getElementById("main").appendChild(sqrObj);
+    document.getElementById("main").appendChild(sqrObj);    
     
 }
 
