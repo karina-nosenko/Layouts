@@ -1,99 +1,96 @@
-//Returns random color
+//Returns a random color
 function randomColor(){
     var colors = ["#afb840","#5b7729","#a1ac21","#c06e25","#f7bb5a","#7a3d14","#cd4716","#f18a55","#d2b294","#e0ab71"];
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
-function add(){
-    Sqr(globalIndex++);
-}
-
-//Show/hide image
-function image(){
-
-    //hide the image
-    if (this.show){
-        this.style.backgroundColor = randomColor();
-        this.style.backgroundImage = "none";
-
-        if(this.starred){   //show the star icon
-            var c = this.childNodes;
-            c[0].style.backgroundColor = none;
-        }
-
-        this.show = false;
-    }
-    //show the image
-    else{
-        this.style.backgroundColor = "#FFFFFF";
-        this.style.backgroundImage = "url(images/hamburger.png)";
-
-        if(this.starred){   //hide the star icon
-            var c = this.childNodes;
-            c[0].style.backgroundColor = this.style.backgroundColor;
-        }
-
-        this.show = true;
-    }
-}
-
-//Create square object and append it to the DOM
-function Sqr(iCurrentSqr){
-    this.show = false;          //is the image opened
-    this.starred = false;       //is the square starred
-    this.color = randomColor(); //the color of the square
-
-    var sqrObj = document.createElement("section"); //create the square object
-
-    //The "add" square
-    if(iCurrentSqr == 0){
-        sqrObj.className = "add";
-
-        var plus = document.createElement("img");
-        plus.className = "plus";
-        plus.src = "images/plus.png";
-        plus.title = "Add";
-
-        sqrObj.appendChild(plus);
-
-        plus.addEventListener("click",add);
-    }
-    //Starred square
-    else if((iCurrentSqr+1)%3 == 0){
-        sqrObj.className = "starred";
-        this.starred = true;
-
-        var star = document.createElement("img");
-        star.className = "star";
-        star.src = "images/star.png";
-
-        sqrObj.appendChild(star);
-
-        sqrObj.addEventListener("click",image);
-    }
-    //Regular square
-    else{
-        sqrObj.className = "square";
-
-        sqrObj.addEventListener("click",image);
-    }
-
-    sqrObj.style.backgroundColor = this.color;  
-
-    document.getElementById("main").appendChild(sqrObj);    
-    
-}
-
+//Calculates a number of squares to create
 function calculateNum(name){
     return name.length * 2;
 }
 
-function SqrsManager(){
-    var sqrsNum = calculateNum("Nosenko");  //The number of squares to create
-    globalIndex = 0;
+//Constructor of the square object
+function Sqr(iCurrentSqr){
+    this.id = iCurrentSqr;      //personal index
+    this.color = randomColor(); //square color
+    this.type = "regular";      //type of the square
+    this.show = false;          //is the image opened
+    this.square = document.createElement("article");    //the square object
 
-    //Creates the squares
-    for(; globalIndex<sqrsNum; globalIndex++){
-        Sqr(globalIndex);
+    var plus = document.createElement("img");
+    var star = document.createElement("img");
+    this.getPlus = function() { return plus; };
+
+    //define the type of the square
+    if(this.id == 0)            this.type = "add";
+    if((this.id+1) % 3 == 0)    this.type = "starred";
+
+    //define the square properties
+    this.square.className = "square";
+    this.square.style.backgroundColor = this.color;
+    
+    if(this.type == "add"){             //the "add" square
+        this.square.className = "add";
+
+        plus.className = "plus";
+        plus.src = "images/plus.png";
+        plus.title = "Add";
+        this.square.appendChild(plus);
+    }
+    else if(this.type == "starred"){    //the starred square
+        this.square.className = "starred";
+
+        star.className = "star";
+        star.src = "images/star.png";
+        this.square.appendChild(star);
+    }
+
+    //variables to use into scope
+    var tobj = this.square; 
+    var tshow = this.show;
+    var tcolor = this.color;
+    var ttype = this.type;
+
+    //onclick event for "add" and "starred" square
+    if(this.type != "add"){     
+        tobj.onclick = function(){
+            tshow = !tshow;
+            if(tshow){
+                tobj.style.backgroundColor = "#FFFFFF";
+                tobj.style.backgroundImage = "url(images/hamburger.png";
+
+                if(ttype == "starred"){
+                    star.style.backgroundColor = tcolor;
+                }
+            }
+            else{
+                tobj.style.backgroundColor = tcolor;
+                tobj.style.backgroundImage = "none";
+
+                if(ttype == "starred"){
+                    star.style.backgroundColor = "none";
+                }
+            }
+        };
+    }
+
+    //append the square to the DOM
+    document.getElementById("main").appendChild(this.square);
+}
+
+//Creates the square objects
+function SqrsManager(){
+    var numOfSquares = calculateNum("Nosenko");
+
+    for(var i=0; i<numOfSquares; i++){
+        var newObj = new Sqr(i);
+        
+        //add a new square by clicking on the plus icon
+        var adder = newObj.getPlus();
+    
+        adder.onclick = function(){
+            numOfSquares++;
+            newObj = new Sqr(i++);
+        };  
     }
 }

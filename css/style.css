@@ -117,7 +117,7 @@ nav a{
 }
 
 #layout3 nav ul{
-    width: 922px;
+    width: auto;
     height: 62px;
     margin: 0 auto;
 
@@ -126,7 +126,7 @@ nav a{
 }
 
 #layout3 nav li{
-    width: 233px;
+    width: auto;
     height: 51px;
     text-align: center;
     padding-top: 11px;
@@ -135,7 +135,7 @@ nav a{
 }
 
 #layout3 nav a{
-    width: 233px;
+    width: 223px;
     height: 40px;
     margin-top: 8px;
 }
@@ -245,7 +245,8 @@ nav a{
 
 @media only screen and (max-width:1030px){
     #wrapper{
-        width: 900px;
+        /*width: 900px;*/
+        width: 666px;
     }
 }
 
