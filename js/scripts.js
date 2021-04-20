@@ -17,8 +17,8 @@ function Sqr(iCurrentSqr){
     this.show = false;          //is the image opened
     this.square = document.createElement("article");    //the square object
 
-    var plus = document.createElement("img");
-    var star = document.createElement("img");
+    var plus = document.createElement("span");
+    var star = document.createElement("span");
     this.getPlus = function() { return plus; };
 
     //define the type of the square
@@ -33,7 +33,6 @@ function Sqr(iCurrentSqr){
         this.square.className = "add";
 
         plus.className = "plus";
-        plus.src = "images/plus.png";
         plus.title = "Add";
         this.square.appendChild(plus);
     }
@@ -41,7 +40,6 @@ function Sqr(iCurrentSqr){
         this.square.className = "starred";
 
         star.className = "star";
-        star.src = "images/star.png";
         this.square.appendChild(star);
     }
 
@@ -75,7 +73,7 @@ function Sqr(iCurrentSqr){
     }
 
     //append the square to the DOM
-    document.getElementById("main").appendChild(this.square);
+    document.getElementsByTagName("main")[0].appendChild(this.square);
 }
 
 //Creates the square objects

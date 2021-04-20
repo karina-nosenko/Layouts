@@ -229,6 +229,8 @@ nav a{
     height: 86px;
     width: 86px;
 
+    background-image: url("../images/plus.png");
+
     position: absolute;
     top: 131px;
     left: 123.5px;
@@ -237,6 +239,8 @@ nav a{
 #layout3 .starred .star{
     height: 45px;
     width: 45px;
+
+    background-image: url("../images/star.png");
 
     position: absolute;
     top: 10px;
